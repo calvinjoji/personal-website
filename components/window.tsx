@@ -17,7 +17,9 @@ export function Window({ title, onClose, children, className, width = "w-[350px]
     <div
       className={cn(
         "absolute rounded-lg overflow-hidden shadow-xl border border-[var(--menubar-border)]",
-        width,
+        "left-2 right-2 md:left-auto md:right-auto",
+        "md:" + width,
+        "max-h-[80vh] overflow-y-auto",
         className,
       )}
     >
@@ -60,7 +62,7 @@ export function Window({ title, onClose, children, className, width = "w-[350px]
               />
             </svg>
           )}
-          <span className="text-center text-xs font-medium text-[var(--desktop-text)] truncate transition-colors duration-300">
+          <span className="text-center text-xs font-medium text-[var(--desktop-text)] truncate max-w-[200px] md:max-w-none transition-colors duration-300">
             {title}
           </span>
         </div>

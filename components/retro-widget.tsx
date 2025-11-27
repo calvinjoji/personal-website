@@ -60,7 +60,7 @@ export function RetroWidget() {
     switch (condition) {
       case "sunny":
         return (
-          <svg viewBox="0 0 40 40" className="w-10 h-10">
+          <svg viewBox="0 0 40 40" className="w-8 h-8 md:w-10 md:h-10">
             {/* Sun */}
             <circle cx="20" cy="20" r="8" fill="#FFD93D" stroke="#F4A100" strokeWidth="1" />
             {/* Sun rays */}
@@ -80,7 +80,7 @@ export function RetroWidget() {
         )
       case "cloudy":
         return (
-          <svg viewBox="0 0 40 40" className="w-10 h-10">
+          <svg viewBox="0 0 40 40" className="w-8 h-8 md:w-10 md:h-10">
             <ellipse cx="20" cy="24" rx="14" ry="8" fill="#B8C4CE" stroke="#8899A6" strokeWidth="1" />
             <ellipse cx="14" cy="20" rx="8" ry="6" fill="#D1D9E0" stroke="#8899A6" strokeWidth="1" />
             <ellipse cx="26" cy="18" rx="7" ry="5" fill="#D1D9E0" stroke="#8899A6" strokeWidth="1" />
@@ -88,7 +88,7 @@ export function RetroWidget() {
         )
       case "rainy":
         return (
-          <svg viewBox="0 0 40 40" className="w-10 h-10">
+          <svg viewBox="0 0 40 40" className="w-8 h-8 md:w-10 md:h-10">
             <ellipse cx="20" cy="16" rx="12" ry="7" fill="#8899A6" stroke="#687888" strokeWidth="1" />
             <ellipse cx="14" cy="13" rx="6" ry="5" fill="#A5B4C0" stroke="#687888" strokeWidth="1" />
             <ellipse cx="25" cy="12" rx="5" ry="4" fill="#A5B4C0" stroke="#687888" strokeWidth="1" />
@@ -100,7 +100,7 @@ export function RetroWidget() {
         )
       case "partly-cloudy":
         return (
-          <svg viewBox="0 0 40 40" className="w-10 h-10">
+          <svg viewBox="0 0 40 40" className="w-8 h-8 md:w-10 md:h-10">
             {/* Sun behind */}
             <circle cx="28" cy="14" r="7" fill="#FFD93D" stroke="#F4A100" strokeWidth="1" />
             {[0, 60, 120, 180, 240, 300].map((angle, i) => (
@@ -127,7 +127,7 @@ export function RetroWidget() {
   }
 
   return (
-    <div className="fixed bottom-24 right-4 z-30">
+    <div className="hidden md:block fixed bottom-24 right-4 z-30">
       <div
         className="rounded-lg overflow-hidden shadow-lg border-2"
         style={{

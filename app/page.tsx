@@ -67,7 +67,9 @@ export default function Desktop() {
 
   return (
     <div className="min-h-screen bg-[var(--desktop-bg)] relative overflow-hidden select-none transition-colors duration-300 retro-cursor">
-      <CursorTrail />
+      <div className="hidden md:block">
+        <CursorTrail />
+      </div>
 
       {isDarkMode && <Starfield />}
 
@@ -80,33 +82,33 @@ export default function Desktop() {
         label="Work"
         onClick={() => setActiveWindow("work")}
         isActive={activeWindow === "work"}
-        initialPosition={{ x: 192, y: 128 }}
+        initialPosition={{ x: 30, y: 50 }}
       />
 
       <DesktopIcon
         icon="cd"
         label={`songs i found\non the side\nof the road`}
         onClick={() => setActiveWindow("songs")}
-        initialPosition={{ x: 64, y: 288 }}
+        initialPosition={{ x: 30, y: 160 }}
       />
 
       <DesktopIcon
         icon="folder"
         label="About"
         onClick={() => setActiveWindow("about")}
-        initialPosition={{ x: 32, y: 420 }}
+        initialPosition={{ x: 30, y: 300 }}
       />
 
       <DesktopIcon
         icon="folder"
         label={`got any\ngames?`}
         onClick={() => setActiveWindow("games")}
-        initialPosition={{ x: typeof window !== "undefined" ? window.innerWidth - 180 : 800, y: 160 }}
+        initialPosition={{ x: 130, y: 50 }}
       />
 
-      {/* Windows */}
+      {/* Windows - Adjusted top positioning for mobile */}
       {activeWindow === "work" && (
-        <Window title="Work" onClose={() => setActiveWindow(null)} className="top-32 left-72">
+        <Window title="Work" onClose={() => setActiveWindow(null)} className="top-10 md:top-32 md:left-72">
           <div className="space-y-6">
             <div>
               <a
@@ -146,7 +148,12 @@ export default function Desktop() {
       )}
 
       {activeWindow === "about" && (
-        <Window title="About" onClose={() => setActiveWindow(null)} className="top-40 left-64" width="w-[500px]">
+        <Window
+          title="About"
+          onClose={() => setActiveWindow(null)}
+          className="top-10 md:top-40 md:left-64"
+          width="w-[500px]"
+        >
           <div className="space-y-4">
             <p className="text-[var(--desktop-text)]">
               🌍 Growing Ethereum&apos;s global community through hackathons, conferences & curating experiences
@@ -183,7 +190,7 @@ export default function Desktop() {
       )}
 
       {activeWindow === "contact" && (
-        <Window title="Contact" onClose={() => setActiveWindow(null)} className="top-48 left-80">
+        <Window title="Contact" onClose={() => setActiveWindow(null)} className="top-10 md:top-48 md:left-80">
           <div className="space-y-4">
             <a href="mailto:calvinjojis@gmail.com" className="block text-[var(--desktop-link)] hover:underline">
               calvinjojis@gmail.com
@@ -212,7 +219,7 @@ export default function Desktop() {
         <Window
           title="songs i found on the side of the road"
           onClose={() => setActiveWindow(null)}
-          className="top-36 left-60"
+          className="top-10 md:top-36 md:left-60"
           width="w-[400px]"
           icon="cd"
         >
@@ -230,7 +237,7 @@ export default function Desktop() {
       )}
 
       {activeWindow === "games" && (
-        <Window title="got any games?" onClose={() => setActiveWindow(null)} className="top-44 left-96">
+        <Window title="got any games?" onClose={() => setActiveWindow(null)} className="top-10 md:top-44 md:left-96">
           <div className="space-y-3">
             <p className="text-[var(--desktop-text-muted)] text-sm italic">coming soon... maybe</p>
             <div className="flex gap-4">

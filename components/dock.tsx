@@ -38,13 +38,13 @@ export function Dock({ items, activeItem }: DockProps) {
   }
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
-      <div className="flex items-end gap-1 px-3 py-2 bg-[var(--dock-bg)] backdrop-blur-md rounded-2xl border border-[var(--dock-border)] shadow-lg transition-colors duration-300">
+    <div className="fixed bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 z-50 max-w-[95vw]">
+      <div className="flex items-end gap-0.5 md:gap-1 px-2 md:px-3 py-1.5 md:py-2 bg-[var(--dock-bg)] backdrop-blur-md rounded-xl md:rounded-2xl border border-[var(--dock-border)] shadow-lg transition-colors duration-300">
         {items.map((item, index) => (
           <div key={item.id} className="relative group">
-            {/* Tooltip */}
+            {/* Tooltip - hidden on mobile */}
             <div
-              className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--dropdown-bg)] text-[var(--desktop-text)] text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none border border-[var(--menubar-border)] shadow-md"
+              className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--dropdown-bg)] text-[var(--desktop-text)] text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none border border-[var(--menubar-border)] shadow-md hidden md:block"
               style={{
                 transform: `translateX(-50%) translateY(${hoveredIndex === index ? -4 : 0}px)`,
               }}
@@ -57,7 +57,7 @@ export function Dock({ items, activeItem }: DockProps) {
               onClick={item.onClick}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="flex flex-col items-center justify-center w-12 h-12 transition-all duration-200 ease-out origin-bottom"
+              className="flex flex-col items-center justify-center w-9 h-9 md:w-12 md:h-12 transition-all duration-200 ease-out origin-bottom"
               style={{
                 transform: `scale(${getScale(index)}) translateY(${getTranslateY(index)}px)`,
               }}
@@ -67,23 +67,23 @@ export function Dock({ items, activeItem }: DockProps) {
 
             {/* Active indicator dot */}
             {activeItem === item.id && (
-              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[var(--desktop-text)] rounded-full opacity-60" />
+              <div className="absolute -bottom-0.5 md:-bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[var(--desktop-text)] rounded-full opacity-60" />
             )}
           </div>
         ))}
 
         {/* Separator */}
-        <div className="w-px h-10 bg-[var(--menubar-border)] mx-1 opacity-50" />
+        <div className="w-px h-8 md:h-10 bg-[var(--menubar-border)] mx-0.5 md:mx-1 opacity-50" />
 
         {/* Trash in dock */}
         <div className="relative group">
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--dropdown-bg)] text-[var(--desktop-text)] text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none border border-[var(--menubar-border)] shadow-md">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--dropdown-bg)] text-[var(--desktop-text)] text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none border border-[var(--menubar-border)] shadow-md hidden md:block">
             Trash
           </div>
           <button
             onMouseEnter={() => setHoveredIndex(items.length)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className="flex flex-col items-center justify-center w-12 h-12 transition-all duration-200 ease-out origin-bottom"
+            className="flex flex-col items-center justify-center w-9 h-9 md:w-12 md:h-12 transition-all duration-200 ease-out origin-bottom"
             style={{
               transform: `scale(${hoveredIndex === items.length ? 1.5 : hoveredIndex === items.length - 1 ? 1.25 : 1}) translateY(${hoveredIndex === items.length ? -16 : hoveredIndex === items.length - 1 ? -10 : 0}px)`,
             }}
