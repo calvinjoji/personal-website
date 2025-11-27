@@ -8,13 +8,13 @@ import { Dock } from "@/components/dock"
 import { FolderIcon, CDIcon, GameIcon, PersonIcon, MailIcon } from "@/components/dock-icons"
 import { Starfield } from "@/components/starfield"
 import { CursorTrail } from "@/components/cursor-trail"
-import { IPod } from "@/components/ipod"
+import { RetroWidget } from "@/components/retro-widget"
 
 type WindowType = "work" | "about" | "contact" | "songs" | "games" | null
 
 export default function Desktop() {
   const [activeWindow, setActiveWindow] = useState<WindowType>(null)
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   useEffect(() => {
     if (isDarkMode) {
@@ -23,6 +23,10 @@ export default function Desktop() {
       document.documentElement.classList.remove("dark")
     }
   }, [isDarkMode])
+
+  useEffect(() => {
+    document.documentElement.classList.add("dark")
+  }, [])
 
   const handleToggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
@@ -69,7 +73,7 @@ export default function Desktop() {
 
       <MenuBar isDarkMode={isDarkMode} onToggleDarkMode={handleToggleDarkMode} />
 
-      <IPod />
+      <RetroWidget />
 
       <DesktopIcon
         icon="folder"
@@ -105,15 +109,36 @@ export default function Desktop() {
         <Window title="Work" onClose={() => setActiveWindow(null)} className="top-32 left-72">
           <div className="space-y-6">
             <div>
-              <h3 className="font-bold text-[var(--desktop-text)]">ETHGlobal</h3>
+              <a
+                href="https://ethglobal.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+              >
+                ETHGlobal
+              </a>
               <p className="text-sm text-[var(--desktop-text-muted)]">April 2024 - Present</p>
             </div>
             <div>
-              <h3 className="font-bold text-[var(--desktop-text)]">Devfolio</h3>
+              <a
+                href="https://devfolio.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+              >
+                Devfolio
+              </a>
               <p className="text-sm text-[var(--desktop-text-muted)]">August 2022 - May 2024</p>
             </div>
             <div>
-              <h3 className="font-bold text-[var(--desktop-text)]">Morgan Stanley</h3>
+              <a
+                href="https://www.morganstanley.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+              >
+                Morgan Stanley
+              </a>
               <p className="text-sm text-[var(--desktop-text-muted)]">June 2021 - August 2022</p>
             </div>
           </div>
@@ -160,24 +185,24 @@ export default function Desktop() {
       {activeWindow === "contact" && (
         <Window title="Contact" onClose={() => setActiveWindow(null)} className="top-48 left-80">
           <div className="space-y-4">
-            <a href="mailto:hello@calvin.dev" className="block text-[var(--desktop-link)] hover:underline">
-              hello@calvin.dev
+            <a href="mailto:calvinjojis@gmail.com" className="block text-[var(--desktop-link)] hover:underline">
+              calvinjojis@gmail.com
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/thisiscalvin_"
               target="_blank"
               rel="noopener noreferrer"
               className="block text-[var(--desktop-link)] hover:underline"
             >
-              @calvin
+              @thisiscalvin_
             </a>
             <a
-              href="https://github.com"
+              href="https://farcaster.xyz/thisiscalvin"
               target="_blank"
               rel="noopener noreferrer"
               className="block text-[var(--desktop-link)] hover:underline"
             >
-              github.com/calvin
+              farcaster.xyz/thisiscalvin
             </a>
           </div>
         </Window>
@@ -189,24 +214,18 @@ export default function Desktop() {
           onClose={() => setActiveWindow(null)}
           className="top-36 left-60"
           width="w-[400px]"
+          icon="cd"
         >
-          <div className="space-y-2">
-            {[
-              "Boards of Canada - Dayvan Cowboy",
-              "Aphex Twin - Avril 14th",
-              "Tycho - A Walk",
-              "Bonobo - Kerala",
-              "Four Tet - She Moves She",
-            ].map((song, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 p-1 hover:bg-[var(--hover-bg)] rounded transition-colors duration-300 retro-cursor-pointer"
-              >
-                <span className="text-xs text-[var(--desktop-text-muted)]">{">"}</span>
-                <span className="text-sm text-[var(--desktop-text)]">{song}</span>
-              </div>
-            ))}
-          </div>
+          <iframe
+            style={{ borderRadius: "12px" }}
+            src="https://open.spotify.com/embed/playlist/7FngXASkyENvc2Zg4t6MaB?utm_source=generator&theme=0"
+            width="100%"
+            height="152"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
         </Window>
       )}
 

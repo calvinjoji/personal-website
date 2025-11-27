@@ -9,9 +9,10 @@ interface WindowProps {
   children: React.ReactNode
   className?: string
   width?: string
+  icon?: "cd" | "folder"
 }
 
-export function Window({ title, onClose, children, className, width = "w-[350px]" }: WindowProps) {
+export function Window({ title, onClose, children, className, width = "w-[350px]", icon }: WindowProps) {
   return (
     <div
       className={cn(
@@ -20,7 +21,7 @@ export function Window({ title, onClose, children, className, width = "w-[350px]
         className,
       )}
     >
-      <div className="h-5 bg-gradient-to-b from-[var(--window-title-from)] to-[var(--window-title-to)] flex items-center px-2 gap-1.5 border-b border-[var(--menubar-border)] transition-colors duration-300">
+      <div className="h-6 bg-gradient-to-b from-[var(--window-title-from)] to-[var(--window-title-to)] flex items-center px-2 gap-1.5 border-b border-[var(--menubar-border)] transition-colors duration-300">
         {/* Traffic light buttons */}
         <button
           onClick={onClose}
@@ -36,14 +37,37 @@ export function Window({ title, onClose, children, className, width = "w-[350px]
           title="Maximize"
         />
 
-        {/* Title - centered */}
-        <span className="flex-1 text-center text-xs font-medium text-[var(--desktop-text)] truncate pr-12 transition-colors duration-300">
-          {title}
-        </span>
+        <div className="flex-1 flex items-center justify-center gap-1.5 pr-12">
+          {icon === "cd" && (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70">
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="text-[var(--desktop-text)]"
+              />
+              <circle cx="12" cy="12" r="3" fill="currentColor" className="text-[var(--desktop-text)]" />
+              <circle
+                cx="12"
+                cy="12"
+                r="6"
+                stroke="currentColor"
+                strokeWidth="0.5"
+                strokeDasharray="2 2"
+                className="text-[var(--desktop-text)] opacity-50"
+              />
+            </svg>
+          )}
+          <span className="text-center text-xs font-medium text-[var(--desktop-text)] truncate transition-colors duration-300">
+            {title}
+          </span>
+        </div>
       </div>
 
       {/* Window content area */}
-      <div className="bg-[var(--window-bg)] p-4 min-h-[150px] transition-colors duration-300">{children}</div>
+      <div className="bg-[var(--window-bg)] p-4 min-h-[100px] transition-colors duration-300">{children}</div>
     </div>
   )
 }
