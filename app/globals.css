@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Fixed dark mode selector - changed from @custom-variant to native selector approach */
+/* In Tailwind v4, dark mode can work via the .dark class selector directly */
+
+/* Updated theme for Mac-style pastel OS aesthetic with proper dark mode */
+:root {
+  --background: oklch(0.95 0.02 340);
+  --foreground: oklch(0.25 0 0);
+  --card: oklch(0.96 0.01 90);
+  --card-foreground: oklch(0.25 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0 0);
+  --primary: oklch(0.5 0.15 280);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9 0.02 90);
+  --secondary-foreground: oklch(0.25 0 0);
+  --muted: oklch(0.85 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.7 0.15 220);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.7 0 0);
+  --input: oklch(0.96 0 0);
+  --ring: oklch(0.5 0.15 280);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Add custom color vars for the desktop */
+  --desktop-bg: #f0e6ef;
+  --desktop-text: #333333;
+  --desktop-text-muted: #555555;
+  --desktop-link: #4444aa;
+  --menubar-from: #ffffff;
+  --menubar-to: #d8d8d8;
+  --menubar-border: #aaaaaa;
+  --window-bg: #f5f5f0;
+  --window-title-from: #e8e8e8;
+  --window-title-to: #c8c8c8;
+  --folder-from: #8ecfff;
+  --folder-to: #4aa3f0;
+  --folder-border: #3a8fd0;
+  --dropdown-bg: #ffffff;
+  --hover-bg: rgba(216, 204, 215, 0.5);
+  /* Add dock variables */
+  --dock-bg: rgba(255, 255, 255, 0.7);
+  --dock-border: rgba(200, 200, 200, 0.8);
+}
+
+/* Updated dark mode with deeper purple night sky to match reference */
+html.dark {
+  --desktop-bg: #1a1a2e;
+  --desktop-text: #eeeeee;
+  --desktop-text-muted: #aaaaaa;
+  --desktop-link: #8888ff;
+  --menubar-from: #2a2a3d;
+  --menubar-to: #1a1a2e;
+  --menubar-border: #3a3a4d;
+  --window-bg: #2a2a3d;
+  --window-title-from: #3a3a4d;
+  --window-title-to: #2a2a3d;
+  --folder-from: #5a8fcf;
+  --folder-to: #2a5f9f;
+  --folder-border: #2a5f9f;
+  --dropdown-bg: #2a2a3d;
+  --hover-bg: rgba(74, 74, 90, 0.5);
+  /* Add dock dark mode variables */
+  --dock-bg: rgba(42, 42, 61, 0.85);
+  --dock-border: rgba(58, 58, 77, 0.6);
+}
+
+/* Added retro cursor styles */
+.retro-cursor {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M0 0 L0 14 L4 10 L7 16 L9 15 L6 9 L11 9 Z' fill='white' stroke='black' stroke-width='1'/%3E%3C/svg%3E")
+    0 0, auto;
+}
+
+.retro-cursor-pointer {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='24' viewBox='0 0 16 24'%3E%3Cpath d='M6 0 L6 14 L9 11 L12 18 L14 17 L11 10 L15 10 L6 0 Z' fill='white' stroke='black' stroke-width='1'/%3E%3C/svg%3E")
+    6 0, pointer;
+}
+
+/* Override all cursor types to use retro style */
+.retro-cursor * {
+  cursor: inherit;
+}
+
+.retro-cursor button,
+.retro-cursor a,
+.retro-cursor [role="button"],
+.retro-cursor input[type="submit"],
+.retro-cursor input[type="button"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M4 0 C4 0 4 12 4 12 L1 9 L4 16 L7 9 L4 12 L4 0' fill='white' stroke='black' stroke-width='1'/%3E%3Ccircle cx='10' cy='10' r='6' fill='none' stroke='black' stroke-width='1'/%3E%3Ccircle cx='10' cy='10' r='4' fill='white' stroke='black' stroke-width='0.5'/%3E%3C/svg%3E")
+    4 0, pointer;
+}
+
+@theme inline {
+  /* Updated to Chicago-style system font for Mac aesthetic */
+  --font-sans: "Geneva", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "Monaco", "Courier New", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Add twinkle animation for stars */
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+}
+
+/* Add twinkle keyframes for star animation */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Add iPod animations for marquee text and equalizer bars */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes eq1 {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 12px;
+  }
+}
+
+@keyframes eq2 {
+  0%,
+  100% {
+    height: 8px;
+  }
+  50% {
+    height: 4px;
+  }
+}
+
+@keyframes eq3 {
+  0%,
+  100% {
+    height: 6px;
+  }
+  50% {
+    height: 10px;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 8s linear infinite;
+}
+
+.animate-eq1 {
+  animation: eq1 0.5s ease-in-out infinite;
+}
+
+.animate-eq2 {
+  animation: eq2 0.6s ease-in-out infinite;
+}
+
+.animate-eq3 {
+  animation: eq3 0.4s ease-in-out infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    cursor: default;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: none;
+  }
+  button,
+  a {
+    cursor: pointer;
+  }
+}
