@@ -38,8 +38,8 @@ export function Dock({ items, activeItem }: DockProps) {
   }
 
   return (
-    <div className="fixed bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 z-50 max-w-[95vw]">
-      <div className="flex items-end gap-0.5 md:gap-1 px-2 md:px-3 py-1.5 md:py-2 bg-[var(--dock-bg)] backdrop-blur-md rounded-xl md:rounded-2xl border border-[var(--dock-border)] shadow-lg transition-colors duration-300">
+    <div className="fixed bottom-1 sm:bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 z-50 max-w-[98vw] sm:max-w-[95vw]">
+      <div className="flex items-end gap-px sm:gap-0.5 md:gap-1 px-1 sm:px-2 md:px-3 py-1 sm:py-1.5 md:py-2 bg-[var(--dock-bg)] backdrop-blur-md rounded-lg sm:rounded-xl md:rounded-2xl border border-[var(--dock-border)] shadow-lg transition-colors duration-300">
         {items.map((item, index) => (
           <div key={item.id} className="relative group">
             {/* Tooltip - hidden on mobile */}
@@ -52,12 +52,11 @@ export function Dock({ items, activeItem }: DockProps) {
               {item.label}
             </div>
 
-            {/* Icon */}
             <button
               onClick={item.onClick}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="flex flex-col items-center justify-center w-9 h-9 md:w-12 md:h-12 transition-all duration-200 ease-out origin-bottom"
+              className="flex flex-col items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-12 md:h-12 transition-all duration-200 ease-out origin-bottom"
               style={{
                 transform: `scale(${getScale(index)}) translateY(${getTranslateY(index)}px)`,
               }}
@@ -65,15 +64,13 @@ export function Dock({ items, activeItem }: DockProps) {
               {item.icon}
             </button>
 
-            {/* Active indicator dot */}
             {activeItem === item.id && (
               <div className="absolute -bottom-0.5 md:-bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[var(--desktop-text)] rounded-full opacity-60" />
             )}
           </div>
         ))}
 
-        {/* Separator */}
-        <div className="w-px h-8 md:h-10 bg-[var(--menubar-border)] mx-0.5 md:mx-1 opacity-50" />
+        <div className="w-px h-6 sm:h-8 md:h-10 bg-[var(--menubar-border)] mx-px sm:mx-0.5 md:mx-1 opacity-50" />
 
         {/* Trash in dock */}
         <div className="relative group">
@@ -83,7 +80,7 @@ export function Dock({ items, activeItem }: DockProps) {
           <button
             onMouseEnter={() => setHoveredIndex(items.length)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className="flex flex-col items-center justify-center w-9 h-9 md:w-12 md:h-12 transition-all duration-200 ease-out origin-bottom"
+            className="flex flex-col items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-12 md:h-12 transition-all duration-200 ease-out origin-bottom"
             style={{
               transform: `scale(${hoveredIndex === items.length ? 1.5 : hoveredIndex === items.length - 1 ? 1.25 : 1}) translateY(${hoveredIndex === items.length ? -16 : hoveredIndex === items.length - 1 ? -10 : 0}px)`,
             }}
@@ -98,7 +95,14 @@ export function Dock({ items, activeItem }: DockProps) {
 
 function TrashIcon() {
   return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
+    >
       <rect
         x="10"
         y="12"

@@ -127,18 +127,17 @@ export function RetroWidget() {
   }
 
   return (
-    <div className="hidden md:block fixed bottom-24 right-4 z-30">
+    <div className="fixed bottom-20 sm:bottom-24 right-2 sm:right-4 z-30">
       <div
         className="rounded-lg overflow-hidden shadow-lg border-2"
         style={{
           background: "var(--window-bg)",
           borderColor: "var(--menubar-border)",
-          width: "140px",
         }}
       >
         {/* Title bar */}
         <div
-          className="px-2 py-1 text-xs font-bold text-center border-b"
+          className="px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-bold text-center border-b"
           style={{
             background: "linear-gradient(to bottom, var(--window-title-from), var(--window-title-to))",
             borderColor: "var(--menubar-border)",
@@ -149,9 +148,12 @@ export function RetroWidget() {
         </div>
 
         {/* Clock section */}
-        <div className="px-3 py-2 text-center border-b" style={{ borderColor: "var(--menubar-border)" }}>
+        <div
+          className="px-2 sm:px-3 py-1.5 sm:py-2 text-center border-b"
+          style={{ borderColor: "var(--menubar-border)" }}
+        >
           <div
-            className="text-2xl font-bold tracking-tight"
+            className="text-lg sm:text-2xl font-bold tracking-tight"
             style={{
               color: "var(--desktop-text)",
               fontFamily: "Monaco, monospace",
@@ -160,7 +162,7 @@ export function RetroWidget() {
             {formatTime(time)}
           </div>
           <div
-            className="text-xs mt-0.5"
+            className="text-[10px] sm:text-xs mt-0.5"
             style={{
               color: "var(--desktop-text-muted)",
             }}
@@ -170,12 +172,12 @@ export function RetroWidget() {
         </div>
 
         {/* Weather section */}
-        <div className="px-3 py-2">
-          <div className="flex items-center justify-between">
+        <div className="px-2 sm:px-3 py-1.5 sm:py-2">
+          <div className="flex items-center justify-between gap-2">
             <div className="flex-shrink-0">{getWeatherIcon(weather.condition)}</div>
             <div className="text-right">
               <div
-                className="text-xl font-bold"
+                className="text-base sm:text-xl font-bold"
                 style={{
                   color: "var(--desktop-text)",
                 }}
@@ -183,7 +185,7 @@ export function RetroWidget() {
                 {weather.temp}°F
               </div>
               <div
-                className="text-[10px]"
+                className="text-[8px] sm:text-[10px]"
                 style={{
                   color: "var(--desktop-text-muted)",
                 }}
@@ -193,7 +195,7 @@ export function RetroWidget() {
             </div>
           </div>
           <div
-            className="text-[10px] text-center mt-1 capitalize"
+            className="text-[8px] sm:text-[10px] text-center mt-1 capitalize"
             style={{
               color: "var(--desktop-text-muted)",
             }}

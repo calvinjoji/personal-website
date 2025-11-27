@@ -67,7 +67,7 @@ export default function Desktop() {
 
   return (
     <div className="min-h-screen bg-[var(--desktop-bg)] relative overflow-hidden select-none transition-colors duration-300 retro-cursor">
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <CursorTrail />
       </div>
 
@@ -82,66 +82,72 @@ export default function Desktop() {
         label="Work"
         onClick={() => setActiveWindow("work")}
         isActive={activeWindow === "work"}
-        initialPosition={{ x: 30, y: 50 }}
+        initialPosition={{ x: 15, y: 50 }}
       />
 
       <DesktopIcon
         icon="cd"
         label={`songs i found\non the side\nof the road`}
         onClick={() => setActiveWindow("songs")}
-        initialPosition={{ x: 30, y: 160 }}
+        initialPosition={{ x: 15, y: 150 }}
       />
 
       <DesktopIcon
         icon="folder"
         label="About"
         onClick={() => setActiveWindow("about")}
-        initialPosition={{ x: 30, y: 300 }}
+        initialPosition={{ x: 15, y: 280 }}
       />
 
       <DesktopIcon
         icon="folder"
         label={`got any\ngames?`}
         onClick={() => setActiveWindow("games")}
-        initialPosition={{ x: 130, y: 50 }}
+        initialPosition={{ x: 90, y: 50 }}
       />
 
-      {/* Windows - Adjusted top positioning for mobile */}
+      <DesktopIcon
+        icon="folder"
+        label="Contact"
+        onClick={() => setActiveWindow("contact")}
+        initialPosition={{ x: 90, y: 150 }}
+      />
+
       {activeWindow === "work" && (
-        <Window title="Work" onClose={() => setActiveWindow(null)} className="top-10 md:top-32 md:left-72">
-          <div className="space-y-6">
+        <Window title="Work" onClose={() => setActiveWindow(null)} className="top-8 sm:top-10 md:top-32 md:left-72">
+          <div className="space-y-4 sm:space-y-6">
             <div>
               <a
                 href="https://ethglobal.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+                className="font-bold text-sm sm:text-base text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
               >
                 ETHGlobal
               </a>
-              <p className="text-sm text-[var(--desktop-text-muted)]">April 2024 - Present</p>
+              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">April 2024 - Present</p>
             </div>
             <div>
               <a
                 href="https://devfolio.co/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+                className="font-bold text-sm sm:text-base text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
               >
                 Devfolio
               </a>
-              <p className="text-sm text-[var(--desktop-text-muted)]">August 2022 - May 2024</p>
+              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">August 2022 - May 2024</p>
             </div>
             <div>
               <a
                 href="https://www.morganstanley.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+                className="font-bold text-sm sm:text-base text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
               >
                 Morgan Stanley
               </a>
-              <p className="text-sm text-[var(--desktop-text-muted)]">June 2021 - August 2022</p>
+              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">June 2021 - August 2022</p>
             </div>
           </div>
         </Window>
@@ -151,22 +157,22 @@ export default function Desktop() {
         <Window
           title="About"
           onClose={() => setActiveWindow(null)}
-          className="top-10 md:top-40 md:left-64"
+          className="top-8 sm:top-10 md:top-40 md:left-64"
           width="w-[500px]"
         >
-          <div className="space-y-4">
-            <p className="text-[var(--desktop-text)]">
+          <div className="space-y-3 sm:space-y-4">
+            <p className="text-sm sm:text-base text-[var(--desktop-text)]">
               🌍 Growing Ethereum&apos;s global community through hackathons, conferences & curating experiences
               @ETHGlobal
             </p>
-            <p className="text-[var(--desktop-text-muted)] text-sm leading-relaxed">
+            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed">
               I build systems for managing volunteers to designing experiences that help 2,000+ hackers/attendees feel
               at home in a new city. Despite being behind the scenes, I&apos;ve always believed events are living
               products — every shipment, schedule, and smile is part of the user experience.
             </p>
-            <div className="text-[var(--desktop-text-muted)] text-sm leading-relaxed space-y-2">
+            <div className="text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed space-y-2">
               <p className="font-semibold text-[var(--desktop-text)]">Some things I&apos;ve done along the way:</p>
-              <ul className="list-disc list-inside space-y-1 ml-2">
+              <ul className="list-disc list-inside space-y-1 ml-1 sm:ml-2">
                 <li>
                   Helped organize ETHGlobal events across 6 continents from Sydney to San Francisco for 20,000+ hackers
                   & 500+ volunteers
@@ -178,11 +184,11 @@ export default function Desktop() {
                 </li>
               </ul>
             </div>
-            <p className="text-[var(--desktop-text-muted)] text-sm leading-relaxed">
+            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed">
               ✨ I like to think about how space, sound, and systems influence how people feel and how logistics can
               tell a story.
             </p>
-            <p className="text-[var(--desktop-text-muted)] text-sm">
+            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm">
               ☕️ Interests: exploring pop up cities, brewing coffee, film, and running
             </p>
           </div>
@@ -190,16 +196,19 @@ export default function Desktop() {
       )}
 
       {activeWindow === "contact" && (
-        <Window title="Contact" onClose={() => setActiveWindow(null)} className="top-10 md:top-48 md:left-80">
-          <div className="space-y-4">
-            <a href="mailto:calvinjojis@gmail.com" className="block text-[var(--desktop-link)] hover:underline">
+        <Window title="Contact" onClose={() => setActiveWindow(null)} className="top-8 sm:top-10 md:top-48 md:left-80">
+          <div className="space-y-3 sm:space-y-4">
+            <a
+              href="mailto:calvinjojis@gmail.com"
+              className="block text-sm sm:text-base text-[var(--desktop-link)] hover:underline break-all"
+            >
               calvinjojis@gmail.com
             </a>
             <a
               href="https://x.com/thisiscalvin_"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-[var(--desktop-link)] hover:underline"
+              className="block text-sm sm:text-base text-[var(--desktop-link)] hover:underline"
             >
               @thisiscalvin_
             </a>
@@ -207,7 +216,7 @@ export default function Desktop() {
               href="https://farcaster.xyz/thisiscalvin"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-[var(--desktop-link)] hover:underline"
+              className="block text-sm sm:text-base text-[var(--desktop-link)] hover:underline"
             >
               farcaster.xyz/thisiscalvin
             </a>
@@ -219,7 +228,7 @@ export default function Desktop() {
         <Window
           title="songs i found on the side of the road"
           onClose={() => setActiveWindow(null)}
-          className="top-10 md:top-36 md:left-60"
+          className="top-8 sm:top-10 md:top-36 md:left-60"
           width="w-[400px]"
           icon="cd"
         >
@@ -237,17 +246,21 @@ export default function Desktop() {
       )}
 
       {activeWindow === "games" && (
-        <Window title="got any games?" onClose={() => setActiveWindow(null)} className="top-10 md:top-44 md:left-96">
+        <Window
+          title="got any games?"
+          onClose={() => setActiveWindow(null)}
+          className="top-8 sm:top-10 md:top-44 md:left-96"
+        >
           <div className="space-y-3">
-            <p className="text-[var(--desktop-text-muted)] text-sm italic">coming soon... maybe</p>
-            <div className="flex gap-4">
-              <div className="w-12 h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-xl border border-[#bbb] text-[var(--desktop-text)]">
+            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm italic">coming soon... maybe</p>
+            <div className="flex gap-2 sm:gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-lg sm:text-xl border border-[#bbb] text-[var(--desktop-text)]">
                 ?
               </div>
-              <div className="w-12 h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-xl border border-[#bbb] text-[var(--desktop-text)]">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-lg sm:text-xl border border-[#bbb] text-[var(--desktop-text)]">
                 ?
               </div>
-              <div className="w-12 h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-xl border border-[#bbb] text-[var(--desktop-text)]">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-lg sm:text-xl border border-[#bbb] text-[var(--desktop-text)]">
                 ?
               </div>
             </div>

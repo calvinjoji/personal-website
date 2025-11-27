@@ -50,7 +50,6 @@ export function DesktopIcon({ icon, label, onClick, isActive, initialPosition }:
   }
 
   const handleClick = (e: React.MouseEvent) => {
-    // Only trigger click if not dragging (moved less than 5px)
     if (!isDragging) {
       onClick()
     }
@@ -64,10 +63,10 @@ export function DesktopIcon({ icon, label, onClick, isActive, initialPosition }:
         position: "absolute",
         left: position.x,
         top: position.y,
-        zIndex: isDragging ? 100 : 1,
+        zIndex: isDragging ? 40 : 10,
       }}
       className={cn(
-        "flex flex-col items-center gap-1 p-2 rounded-lg",
+        "flex flex-col items-center gap-1 p-1 sm:p-2 rounded-lg",
         "hover:bg-[var(--hover-bg)] transition-colors duration-300",
         isActive && "bg-[#4444aa]/20",
         isDragging && "opacity-80 scale-105",
@@ -77,7 +76,7 @@ export function DesktopIcon({ icon, label, onClick, isActive, initialPosition }:
       {icon === "cd" && <MacCDIcon />}
       <span
         className={cn(
-          "text-xs text-center whitespace-pre-line leading-tight max-w-20 transition-colors duration-300",
+          "text-[10px] sm:text-xs text-center whitespace-pre-line leading-tight max-w-16 sm:max-w-20 transition-colors duration-300",
           isActive
             ? "text-white bg-[#4444aa] px-1 rounded"
             : "text-[var(--desktop-text)] drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]",
@@ -92,18 +91,16 @@ export function DesktopIcon({ icon, label, onClick, isActive, initialPosition }:
 function MacFolderIcon({ isActive }: { isActive?: boolean }) {
   return (
     <div className={cn("relative transition-colors duration-300", isActive && "brightness-110")}>
-      {/* Folder tab */}
-      <div className="absolute -top-1 left-2 w-5 h-2 bg-gradient-to-b from-[var(--folder-from)] to-[var(--folder-to)] rounded-t-md transition-colors duration-300" />
-      {/* Folder body */}
-      <div className="w-12 h-10 bg-gradient-to-b from-[var(--folder-from)] to-[var(--folder-to)] rounded-md shadow-md border border-[var(--folder-border)] transition-colors duration-300" />
+      <div className="absolute -top-1 left-1.5 sm:left-2 w-4 sm:w-5 h-1.5 sm:h-2 bg-gradient-to-b from-[var(--folder-from)] to-[var(--folder-to)] rounded-t-md transition-colors duration-300" />
+      <div className="w-10 sm:w-12 h-8 sm:h-10 bg-gradient-to-b from-[var(--folder-from)] to-[var(--folder-to)] rounded-md shadow-md border border-[var(--folder-border)] transition-colors duration-300" />
     </div>
   )
 }
 
 function MacCDIcon() {
   return (
-    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f0f0f0] via-[#d8d8e8] to-[#b8b8c8] border border-[var(--menubar-border)] flex items-center justify-center shadow-md transition-colors duration-300">
-      <div className="w-4 h-4 rounded-full bg-[var(--desktop-bg)] border border-[var(--menubar-border)] transition-colors duration-300" />
+    <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br from-[#f0f0f0] via-[#d8d8e8] to-[#b8b8c8] border border-[var(--menubar-border)] flex items-center justify-center shadow-md transition-colors duration-300">
+      <div className="w-3 sm:w-4 h-3 sm:h-4 rounded-full bg-[var(--desktop-bg)] border border-[var(--menubar-border)] transition-colors duration-300" />
     </div>
   )
 }

@@ -17,31 +17,32 @@ export function Window({ title, onClose, children, className, width = "w-[350px]
     <div
       className={cn(
         "absolute rounded-lg overflow-hidden shadow-xl border border-[var(--menubar-border)]",
-        "left-2 right-2 md:left-auto md:right-auto",
+        "left-1 right-1 sm:left-2 sm:right-2 md:left-auto md:right-auto",
         "md:" + width,
-        "max-h-[80vh] overflow-y-auto",
+        "max-h-[70vh] sm:max-h-[80vh] overflow-y-auto",
+        "z-50",
         className,
       )}
     >
-      <div className="h-6 bg-gradient-to-b from-[var(--window-title-from)] to-[var(--window-title-to)] flex items-center px-2 gap-1.5 border-b border-[var(--menubar-border)] transition-colors duration-300">
+      <div className="h-6 bg-gradient-to-b from-[var(--window-title-from)] to-[var(--window-title-to)] flex items-center px-2 gap-1.5 border-b border-[var(--menubar-border)] transition-colors duration-300 sticky top-0 z-10">
         {/* Traffic light buttons */}
         <button
           onClick={onClose}
-          className="w-3 h-3 rounded-full bg-[#ff5f57] border border-[#e33e32] hover:brightness-90 transition-all"
+          className="w-3 h-3 rounded-full bg-[#ff5f57] border border-[#e33e32] hover:brightness-90 transition-all flex-shrink-0"
           title="Close"
         />
         <button
-          className="w-3 h-3 rounded-full bg-[#febc2e] border border-[#e0a023] hover:brightness-90 transition-all"
+          className="w-3 h-3 rounded-full bg-[#febc2e] border border-[#e0a023] hover:brightness-90 transition-all flex-shrink-0"
           title="Minimize"
         />
         <button
-          className="w-3 h-3 rounded-full bg-[#28c840] border border-[#1aab29] hover:brightness-90 transition-all"
+          className="w-3 h-3 rounded-full bg-[#28c840] border border-[#1aab29] hover:brightness-90 transition-all flex-shrink-0"
           title="Maximize"
         />
 
-        <div className="flex-1 flex items-center justify-center gap-1.5 pr-12">
+        <div className="flex-1 flex items-center justify-center gap-1.5 pr-8 sm:pr-12 min-w-0">
           {icon === "cd" && (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="opacity-70 flex-shrink-0">
               <circle
                 cx="12"
                 cy="12"
@@ -62,14 +63,14 @@ export function Window({ title, onClose, children, className, width = "w-[350px]
               />
             </svg>
           )}
-          <span className="text-center text-xs font-medium text-[var(--desktop-text)] truncate max-w-[200px] md:max-w-none transition-colors duration-300">
+          <span className="text-center text-[10px] sm:text-xs font-medium text-[var(--desktop-text)] truncate transition-colors duration-300">
             {title}
           </span>
         </div>
       </div>
 
       {/* Window content area */}
-      <div className="bg-[var(--window-bg)] p-4 min-h-[100px] transition-colors duration-300">{children}</div>
+      <div className="bg-[var(--window-bg)] p-3 sm:p-4 min-h-[100px] transition-colors duration-300">{children}</div>
     </div>
   )
 }
