@@ -267,6 +267,17 @@ export function MenuBar({ isDarkMode, onToggleDarkMode }: MenuBarProps) {
               >
                 Open in GitHub
               </a>
+              <p className="text-sm text-[#333] mt-3">
+                Design inspo by{" "}
+                <a
+                  href="https://x.com/camidarling"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#2563eb] hover:underline"
+                >
+                  @camidarling
+                </a>
+              </p>
             </div>
           </div>
         </>

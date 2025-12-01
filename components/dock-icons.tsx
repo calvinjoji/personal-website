@@ -93,26 +93,44 @@ export function MailIcon() {
 export function TapeIcon() {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* VHS Tape body */}
-      <rect x="4" y="10" width="32" height="20" rx="2" fill="url(#tapeGradient)" stroke="#444" strokeWidth="1.5" />
-      {/* Left reel */}
-      <circle cx="14" cy="18" r="5" fill="#f5f5f5" stroke="#888" strokeWidth="1" />
-      <circle cx="14" cy="18" r="2" fill="#333" />
-      {/* Right reel */}
-      <circle cx="26" cy="18" r="5" fill="#f5f5f5" stroke="#888" strokeWidth="1" />
-      <circle cx="26" cy="18" r="2" fill="#333" />
-      {/* Label strip */}
-      <rect x="6" y="24" width="28" height="4" rx="1" fill="url(#labelGradient)" />
+      {/* TV Body */}
+      <rect x="4" y="8" width="32" height="28" rx="3" fill="#e8e0d4" stroke="#5a5a5a" strokeWidth="1.5" />
+
+      {/* Antennas */}
+      <line x1="14" y1="8" x2="10" y2="2" stroke="#5a5a5a" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="26" y1="8" x2="30" y2="2" stroke="#5a5a5a" strokeWidth="1.5" strokeLinecap="round" />
+
+      {/* Screen bezel */}
+      <rect x="6" y="10" width="22" height="16" rx="1" fill="#3a3a3a" />
+
+      {/* CRT Screen */}
+      <rect x="7" y="11" width="20" height="14" rx="1" fill="#1a3a2a" />
+
+      {/* Screen glow/scanlines effect */}
+      <rect x="7" y="11" width="20" height="14" rx="1" fill="url(#screenGlow)" opacity="0.5" />
+
+      {/* Play button on screen */}
+      <polygon points="15,15 15,22 21,18.5" fill="#22cc66" />
+
+      {/* Control panel */}
+      <rect x="28" y="10" width="7" height="16" rx="1" fill="#d0c8bc" />
+
+      {/* Speaker grille lines */}
+      <line x1="29" y1="12" x2="29" y2="18" stroke="#888" strokeWidth="0.5" />
+      <line x1="30.5" y1="12" x2="30.5" y2="18" stroke="#888" strokeWidth="0.5" />
+      <line x1="32" y1="12" x2="32" y2="18" stroke="#888" strokeWidth="0.5" />
+
+      {/* Dial knob */}
+      <circle cx="31" cy="22" r="2" fill="#555" stroke="#333" strokeWidth="0.5" />
+
+      {/* Power LED */}
+      <circle cx="31" cy="25" r="1" fill="#ff3333" />
+
       <defs>
-        <linearGradient id="tapeGradient" x1="20" y1="10" x2="20" y2="30" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#3a3a3a" />
-          <stop offset="1" stopColor="#1a1a1a" />
-        </linearGradient>
-        <linearGradient id="labelGradient" x1="6" y1="26" x2="34" y2="26" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#ffcc00" />
-          <stop offset="0.5" stopColor="#ff6600" />
-          <stop offset="1" stopColor="#ff3366" />
-        </linearGradient>
+        <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#44ff88" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#1a3a2a" stopOpacity="0" />
+        </radialGradient>
       </defs>
     </svg>
   )
