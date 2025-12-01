@@ -5,12 +5,12 @@ import { DesktopIcon } from "@/components/desktop-icon"
 import { Window } from "@/components/window"
 import { MenuBar } from "@/components/menu-bar"
 import { Dock } from "@/components/dock"
-import { FolderIcon, CDIcon, GameIcon, PersonIcon, MailIcon } from "@/components/dock-icons"
+import { FolderIcon, CDIcon, GameIcon, PersonIcon, MailIcon, TapeIcon } from "@/components/dock-icons"
 import { Starfield } from "@/components/starfield"
 import { CursorTrail } from "@/components/cursor-trail"
 import { RetroWidget } from "@/components/retro-widget"
 
-type WindowType = "work" | "about" | "contact" | "songs" | "games" | null
+type WindowType = "work" | "about" | "contact" | "songs" | "games" | "tapes" | null
 
 export default function Desktop() {
   const [activeWindow, setActiveWindow] = useState<WindowType>(null)
@@ -52,6 +52,12 @@ export default function Desktop() {
       onClick: () => setActiveWindow("songs"),
     },
     {
+      id: "tapes",
+      icon: <TapeIcon />,
+      label: "Tapes",
+      onClick: () => setActiveWindow("tapes"),
+    },
+    {
       id: "games",
       icon: <GameIcon />,
       label: "Games",
@@ -77,40 +83,52 @@ export default function Desktop() {
 
       <RetroWidget />
 
+      {/* Row 1: Work (left), got any games? (right) */}
       <DesktopIcon
         icon="folder"
         label="Work"
         onClick={() => setActiveWindow("work")}
         isActive={activeWindow === "work"}
-        initialPosition={{ x: 15, y: 50 }}
-      />
-
-      <DesktopIcon
-        icon="cd"
-        label={`songs i found\non the side\nof the road`}
-        onClick={() => setActiveWindow("songs")}
-        initialPosition={{ x: 15, y: 150 }}
-      />
-
-      <DesktopIcon
-        icon="folder"
-        label="About"
-        onClick={() => setActiveWindow("about")}
-        initialPosition={{ x: 15, y: 280 }}
+        initialPosition={{ x: 20, y: 50 }}
       />
 
       <DesktopIcon
         icon="folder"
         label={`got any\ngames?`}
         onClick={() => setActiveWindow("games")}
-        initialPosition={{ x: 90, y: 50 }}
+        initialPosition={{ x: 120, y: 50 }}
+      />
+
+      {/* Row 2: songs (left), Contact (right) */}
+      <DesktopIcon
+        icon="cd"
+        label={`songs i found\non the side\nof the road`}
+        onClick={() => setActiveWindow("songs")}
+        initialPosition={{ x: 20, y: 180 }}
       />
 
       <DesktopIcon
         icon="folder"
         label="Contact"
         onClick={() => setActiveWindow("contact")}
-        initialPosition={{ x: 90, y: 150 }}
+        initialPosition={{ x: 120, y: 180 }}
+      />
+
+      {/* Row 3: About (left) */}
+      <DesktopIcon
+        icon="folder"
+        label="About"
+        onClick={() => setActiveWindow("about")}
+        initialPosition={{ x: 20, y: 310 }}
+      />
+
+      {/* Row 4: event tapes (centered) */}
+      <DesktopIcon
+        icon="tape"
+        label="event tapes"
+        onClick={() => setActiveWindow("tapes")}
+        isActive={activeWindow === "tapes"}
+        initialPosition={{ x: 70, y: 440 }}
       />
 
       {activeWindow === "work" && (
@@ -160,36 +178,29 @@ export default function Desktop() {
           className="top-8 sm:top-10 md:top-40 md:left-64"
           width="w-[500px]"
         >
-          <div className="space-y-3 sm:space-y-4">
-            <p className="text-sm sm:text-base text-[var(--desktop-text)]">
-              🌍 Growing Ethereum&apos;s global community through hackathons, conferences & curating experiences
-              @ETHGlobal
+          <div className="space-y-4 text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed">
+            <p className="text-[var(--desktop-text)] font-medium">hey, i&apos;m calvin 👋</p>
+            <p>
+              i spend my days (and too many nights) building events across cities, timezones, and airport lounges. i
+              love turning blank venues into buzzing spaces where people meet, build, break things, fix things, and
+              accidentally start companies together.
             </p>
-            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed">
-              I build systems for managing volunteers to designing experiences that help 2,000+ hackers/attendees feel
-              at home in a new city. Despite being behind the scenes, I&apos;ve always believed events are living
-              products — every shipment, schedule, and smile is part of the user experience.
+            <p>
+              i&apos;m somewhere between operations, logistics, and &quot;pls don&apos;t worry, i&apos;ll figure it
+              out.&quot; whether it&apos;s 200 volunteers, 2,000 hackers, or one courier stuck at customs at 3 am, i
+              usually have a plan, a backup plan, and a google sheet that no one asked for.
             </p>
-            <div className="text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed space-y-2">
-              <p className="font-semibold text-[var(--desktop-text)]">Some things I&apos;ve done along the way:</p>
-              <ul className="list-disc list-inside space-y-1 ml-1 sm:ml-2">
-                <li>
-                  Helped organize ETHGlobal events across 6 continents from Sydney to San Francisco for 20,000+ hackers
-                  & 500+ volunteers
-                </li>
-                <li>Built and scaled global support operations at Devfolio for 800k+ users and 1,300 hackathons</li>
-                <li>Worked at Morgan Stanley automating trade functions</li>
-                <li>
-                  Designed workflows, shipping systems, and community rituals that make global-scale events feel human
-                </li>
-              </ul>
-            </div>
-            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed">
-              ✨ I like to think about how space, sound, and systems influence how people feel and how logistics can
-              tell a story.
+            <p>
+              i care about experiences that feel thoughtful, warm, and a little bit magical. events should have soul,
+              good coffee, smooth workflows, and moments that make people go &quot;whoa… who planned this?&quot; (hi. it
+              was me.)
             </p>
-            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm">
-              ☕️ Interests: exploring pop up cities, brewing coffee, film, and running
+            <p>
+              i work across continents, collect way too many airport stamps, and somehow still get excited every time
+              humans come together to make things.
+            </p>
+            <p className="text-[var(--desktop-text)]">
+              if you&apos;re into building cool stuff with good people, we&apos;ll get along 💛
             </p>
           </div>
         </Window>
@@ -268,7 +279,85 @@ export default function Desktop() {
         </Window>
       )}
 
+      {activeWindow === "tapes" && (
+        <Window
+          title="event tapes"
+          onClose={() => setActiveWindow(null)}
+          className="top-8 sm:top-10 md:top-28 md:left-56"
+          width="w-[480px]"
+        >
+          <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm italic">
+              some recordings from past events
+            </p>
+
+            {/* 2025 */}
+            <div className="space-y-2">
+              <h3 className="text-[var(--desktop-text)] font-bold text-sm border-b border-[var(--menubar-border)] pb-1">
+                2025
+              </h3>
+              <VideoItem title="ETHGlobal Taipei" url="https://www.youtube.com/watch?v=pZ_m3o7EgA4" />
+              <VideoItem title="ETHGlobal Cannes" url="https://www.youtube.com/watch?v=MVJNB3Q9HA0" />
+              <VideoItem title="ETHGlobal New York" url="https://www.youtube.com/watch?v=cmWCH391jZM" />
+              <VideoItem title="Pragma Denver" url="https://www.youtube.com/watch?v=Ouml0A3UmLY" />
+            </div>
+
+            {/* 2024 */}
+            <div className="space-y-2">
+              <h3 className="text-[var(--desktop-text)] font-bold text-sm border-b border-[var(--menubar-border)] pb-1">
+                2024
+              </h3>
+              <VideoItem title="ETHGlobal Brussels" url="https://www.youtube.com/watch?v=Be1HQb4goco" />
+              <VideoItem title="ETHGlobal Bangkok" url="https://www.youtube.com/watch?v=WYS4V181S7g" />
+              <VideoItem title="ETHGlobal San Francisco" url="https://www.youtube.com/watch?v=V-3QRspj4jw" />
+            </div>
+
+            {/* 2023 */}
+            <div className="space-y-2">
+              <h3 className="text-[var(--desktop-text)] font-bold text-sm border-b border-[var(--menubar-border)] pb-1">
+                2023
+              </h3>
+              <VideoItem title="ETHIndia 2023" url="https://www.youtube.com/watch?v=S_KxidUhO7w" />
+            </div>
+
+            {/* 2022 */}
+            <div className="space-y-2">
+              <h3 className="text-[var(--desktop-text)] font-bold text-sm border-b border-[var(--menubar-border)] pb-1">
+                2022
+              </h3>
+              <VideoItem title="ETHIndia 2022" url="https://www.youtube.com/watch?v=rWc1X9yA-wU" />
+            </div>
+          </div>
+        </Window>
+      )}
+
       <Dock items={dockItems} activeItem={activeWindow} />
     </div>
+  )
+}
+
+function VideoItem({ title, url }: { title: string; url: string }) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-3 p-2 rounded-lg hover:bg-[var(--hover-bg)] transition-colors group"
+    >
+      <div className="w-16 h-10 bg-gradient-to-br from-[#333] to-[#111] rounded flex items-center justify-center flex-shrink-0 border border-[#444] group-hover:border-[var(--desktop-link)] transition-colors">
+        <svg
+          className="w-4 h-4 text-white/70 group-hover:text-white transition-colors"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+        </svg>
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-[var(--desktop-text)] text-xs sm:text-sm font-medium truncate group-hover:text-[var(--desktop-link)] transition-colors">
+          {title}
+        </p>
+      </div>
+    </a>
   )
 }

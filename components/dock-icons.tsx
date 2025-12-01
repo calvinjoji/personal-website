@@ -89,3 +89,31 @@ export function MailIcon() {
     </svg>
   )
 }
+
+export function TapeIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* VHS Tape body */}
+      <rect x="4" y="10" width="32" height="20" rx="2" fill="url(#tapeGradient)" stroke="#444" strokeWidth="1.5" />
+      {/* Left reel */}
+      <circle cx="14" cy="18" r="5" fill="#f5f5f5" stroke="#888" strokeWidth="1" />
+      <circle cx="14" cy="18" r="2" fill="#333" />
+      {/* Right reel */}
+      <circle cx="26" cy="18" r="5" fill="#f5f5f5" stroke="#888" strokeWidth="1" />
+      <circle cx="26" cy="18" r="2" fill="#333" />
+      {/* Label strip */}
+      <rect x="6" y="24" width="28" height="4" rx="1" fill="url(#labelGradient)" />
+      <defs>
+        <linearGradient id="tapeGradient" x1="20" y1="10" x2="20" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#3a3a3a" />
+          <stop offset="1" stopColor="#1a1a1a" />
+        </linearGradient>
+        <linearGradient id="labelGradient" x1="6" y1="26" x2="34" y2="26" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#ffcc00" />
+          <stop offset="0.5" stopColor="#ff6600" />
+          <stop offset="1" stopColor="#ff3366" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
