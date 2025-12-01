@@ -15,6 +15,25 @@ export const metadata: Metadata = {
     icon: "/icon.jpg",
     apple: "/icon.jpg",
   },
+  openGraph: {
+    title: "calvinn",
+    description: "Calvin's personal website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Xerox PARC Learning Research Group in the beanbag room",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "calvinn",
+    description: "Calvin's personal website",
+    images: ["/og-image.jpg"],
+  },
 }
 
 export default function RootLayout({
