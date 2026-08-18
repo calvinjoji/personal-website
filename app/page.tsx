@@ -136,6 +136,17 @@ export default function Desktop() {
           <div className="space-y-4 sm:space-y-6">
             <div>
               <a
+                href="https://ethereum.foundation/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-sm sm:text-base text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+              >
+                Ethereum Foundation
+              </a>
+              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">May 2026 - Present</p>
+            </div>
+            <div>
+              <a
                 href="https://ethglobal.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -143,7 +154,7 @@ export default function Desktop() {
               >
                 ETHGlobal
               </a>
-              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">April 2024 - Present</p>
+              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">April 2024 - March 2026</p>
             </div>
             <div>
               <a
@@ -181,19 +192,10 @@ export default function Desktop() {
           <div className="space-y-4 text-[var(--desktop-text-muted)] text-xs sm:text-sm leading-relaxed">
             <p className="text-[var(--desktop-text)] font-medium">hey, i&apos;m calvin 👋</p>
             <p>
-              i spend my days (and too many nights) building events across cities, timezones, and airport lounges. i
-              love turning blank venues into buzzing spaces where people meet, build, break things, fix things, and
-              accidentally start companies together.
+              currently working in the devcon team to host ethereum foundation&apos;s flagship conference
             </p>
             <p>
-              i&apos;m somewhere between operations, logistics, and &quot;pls don&apos;t worry, i&apos;ll figure it
-              out.&quot; whether it&apos;s 200 volunteers, 2,000 hackers, or one courier stuck at customs at 3 am, i
-              usually have a plan, a backup plan, and a google sheet that no one asked for.
-            </p>
-            <p>
-              i care about experiences that feel thoughtful, warm, and a little bit magical. events should have soul,
-              good coffee, smooth workflows, and moments that make people go &quot;whoa… who planned this?&quot; (hi. it
-              was me.)
+              previously i grew ethereum&apos;s global community through hackathons, conferences &amp; curated experiences @ETHGlobal @devfolio and before that was figuring trading options @morganstanley
             </p>
             <p>
               i work across continents, collect way too many airport stamps, and somehow still get excited every time
