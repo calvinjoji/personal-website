@@ -136,6 +136,17 @@ export default function Desktop() {
           <div className="space-y-4 sm:space-y-6">
             <div>
               <a
+                href="https://ethereum.foundation/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-sm sm:text-base text-[var(--desktop-text)] hover:text-[var(--desktop-link)] hover:underline transition-colors"
+              >
+                Ethereum Foundation
+              </a>
+              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">May 2026 - Present</p>
+            </div>
+            <div>
+              <a
                 href="https://ethglobal.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -143,7 +154,7 @@ export default function Desktop() {
               >
                 ETHGlobal
               </a>
-              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">April 2024 - Present</p>
+              <p className="text-xs sm:text-sm text-[var(--desktop-text-muted)]">April 2024 - March 2026</p>
             </div>
             <div>
               <a
