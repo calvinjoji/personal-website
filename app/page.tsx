@@ -83,7 +83,7 @@ export default function Desktop() {
 
       <RetroWidget />
 
-      {/* Row 1: Work (left), got any games? (right) */}
+      {/* Row 1: Work (left), event footprints (right) */}
       <DesktopIcon
         icon="folder"
         label="Work"
@@ -94,7 +94,7 @@ export default function Desktop() {
 
       <DesktopIcon
         icon="folder"
-        label={`got any\ngames?`}
+        label={`event\nfootprints`}
         onClick={() => setActiveWindow("games")}
         initialPosition={{ x: 120, y: 50 }}
       />
@@ -260,24 +260,16 @@ export default function Desktop() {
 
       {activeWindow === "games" && (
         <Window
-          title="got any games?"
+          title="event footprints"
           onClose={() => setActiveWindow(null)}
-          className="top-8 sm:top-10 md:top-44 md:left-96"
+          className="top-8 sm:top-10 md:top-28 md:left-72"
+          width="w-[560px]"
         >
-          <div className="space-y-3">
-            <p className="text-[var(--desktop-text-muted)] text-xs sm:text-sm italic">coming soon... maybe</p>
-            <div className="flex gap-2 sm:gap-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-lg sm:text-xl border border-[#bbb] text-[var(--desktop-text)]">
-                ?
-              </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-lg sm:text-xl border border-[#bbb] text-[var(--desktop-text)]">
-                ?
-              </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#ddd] rounded-lg flex items-center justify-center text-lg sm:text-xl border border-[#bbb] text-[var(--desktop-text)]">
-                ?
-              </div>
-            </div>
-          </div>
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-lXBYvNz3ERuA7KLGCHTkqZhvsCB08W.png"
+            alt="World map showing cities where Calvin has hosted or attended events"
+            className="w-full h-auto"
+          />
         </Window>
       )}
 
